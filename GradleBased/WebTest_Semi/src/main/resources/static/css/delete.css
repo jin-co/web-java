@@ -1,0 +1,11 @@
+.delete-text {
+    text-align: center;
+}
+
+.delete-container {
+    width: 100%;
+    display: flex;
+}
+.delete-box {
+    margin: 0 auto;
+}
