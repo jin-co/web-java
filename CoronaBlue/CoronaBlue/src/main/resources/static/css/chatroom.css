@@ -1,0 +1,37 @@
+.userImage{
+	width:60px;
+ 	height:60px;
+ 	border-radius:50%;
+
+}
+
+
+.chatWrapper {
+		width:80%;
+
+	
+}
+
+.chatName{
+	font-size:0.6em;
+	font-weight:600;
+    text-overflow: ellipsis;
+	
+}
+
+.chatContent{
+	font-size:0.9em;
+	text-overflow: ellipsis;
+	
+}
+
+.chatTime{
+	font-size:0.5em;
+	font-weight:100;
+	width:20%;
+	float:right;
+	text-align:right;
+    text-overflow: ellipsis;
+	
+
+}

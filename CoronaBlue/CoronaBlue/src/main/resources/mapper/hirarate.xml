@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mulcam.project.dao.HiraRateDAO">
+
+		<select id="selectAllAddress" resultType="HiraRateVO">
+		
+				<![CDATA[
+				
+						SELECT
+								name,
+								address
+						FROM
+								ctb_hirarate
+						WHERE 
+								(posx is null and
+								posy is null) or
+								(posx = 0 and
+								posy = 0) 		
+
+				]]>
+
+		</select>
+		
+		<select id="selectAllPos" resultType="HiraRateVO">
+		
+				<![CDATA[
+				
+						SELECT
+								name,
+								rate,
+								posx,
+								posy
+						FROM
+								ctb_hirarate
+						WHERE 
+								(posx is not null and
+								posy is not null) or
+								(posx != 0 and
+								posy != 0) 		
+
+				]]>
+
+		</select>
+		
+		<update id="updatePosToAddress" parameterType="HiraRateVO">
+		
+				<![CDATA[
+				
+						UPDATE
+						   
+								ctb_hirarate
+						SET
+								posx = #{posy},
+								posy = #{posx}
+						
+						WHERE
+								name = #{name}
+								
+				]]>
+		
+		</update>
+
+</mapper>
