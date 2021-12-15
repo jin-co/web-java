@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4287e78c-858d-4021-8a05-84679352762e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/add/console/TextFileReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/director/words_250.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/director/sample_output_words_250.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KBaekAssignment4/add/console/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KBaekAssignment4/add/console/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/add/console/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/add/console/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/add/console/TextFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/add/console/TextFileReader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +125,7 @@
       <option name="presentableId" value="Default" />
       <updated>1639485442351</updated>
       <workItem from="1639485443876" duration="1858000" />
-      <workItem from="1639547344480" duration="3317000" />
+      <workItem from="1639547344480" duration="6051000" />
     </task>
     <servers />
   </component>

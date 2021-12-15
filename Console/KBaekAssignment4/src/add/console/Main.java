@@ -1,12 +1,35 @@
 package add.console;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+/*
+* Author: Kwangjin Baek
+* Date: 2021. Dec. 15.
+* Description: console application that reads data from file
+* and shows the data to the console in three versions
+* (original, without characters, with count of the letters in each word)
+* */
 
+public class Main {
     public static void main(String[] args) {
         TextFileReader reader = new TextFileReader();
-        List<String> lines = reader.readFromProjectPath("words_250.txt");
+
+        // user input
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String fileNameInput = "";
+        System.out.print("Please enter file name: ");
+        try {
+            fileNameInput = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // getting data from file
+        List<String> lines = reader.readFromProjectPath(fileNameInput);
 
         // writing to console
 //        lines.forEach(System.out::println);
@@ -19,18 +42,27 @@ public class Main {
         System.out.println("------------------------------\n" +
                 "words after removing special characters\n" +
                 "------------------------------");
+        List<String> onlyWords = new ArrayList<>();
         for (var line: lines) {
-            String wordsWithoutCharacters = line.replaceAll("[^a-zA-Z]+", "");
-            System.out.println(wordsWithoutCharacters);
+            String onlyWord = line.replaceAll("[^a-zA-Z]+", "");
+            onlyWords.add(onlyWord);
+            System.out.println(onlyWord);
         }
 
         System.out.println("------------------------------\n" +
                 "length -- number of words\n" +
                 "------------------------------");
 
-        for (var line: lines) {
-            int length = line.length();
-            System.out.println();
+        // including characters
+        for (int i = 0; i < lines.size(); i++) {
+            int length = lines.get(i).length();
+            System.out.println(i + " " + lines.get(i) + " -- " + length + " " + "words");
+        }
+
+        // without characters
+        for (int i = 0; i < onlyWords.size(); i++) {
+            int length = onlyWords.get(i).length();
+            System.out.println(i + " " + onlyWords.get(i) + " -- " + length + " " + "words");
         }
     }
 }

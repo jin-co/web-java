@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+// class that reads data from file
+// and return the data
 public class TextFileReader {
     Logger log = Logger.getLogger(this.getClass().getName());
      public List<String> readFromProjectPath (String fileName) {
@@ -27,7 +29,6 @@ public class TextFileReader {
          } catch (IOException e) {
              log.severe(e.getStackTrace().toString());
          }
-
          return  lines;
      }
 }
