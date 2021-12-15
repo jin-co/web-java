@@ -31,14 +31,12 @@ public class Main {
         // getting data from file
         List<String> lines = reader.readFromProjectPath(fileNameInput);
 
-        // writing to console
-//        lines.forEach(System.out::println);
-//        System.out.println(lines);
-//        lines.forEach(line -> System.out.println());
+        // writing to console (stage 1)
         for (String line: lines) {
             System.out.println(line);
         }
 
+        // writing to console (stage 2)
         System.out.println("------------------------------\n" +
                 "words after removing special characters\n" +
                 "------------------------------");
@@ -49,6 +47,7 @@ public class Main {
             System.out.println(onlyWord);
         }
 
+        // writing to console (stage 3) with two variations
         System.out.println("------------------------------\n" +
                 "length -- number of words\n" +
                 "------------------------------");
