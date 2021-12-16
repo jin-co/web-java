@@ -1,11 +1,29 @@
 package add.console;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
 	    System.out.println(displayHighScorePosition("Tom", 3));
         System.out.println(calculateHighScorePosition(130));
         System.out.println(toMilesPerHour(20));
+        System.out.println(Integer.parseInt("3"));
+        System.out.println(Double.parseDouble("3"));
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter: ");
+        String name = scanner.nextLine();
+
+        System.out.print("Enter: ");
+        int year = scanner.nextInt();
+        scanner.nextLine(); // handles enter key without this, it closes
+
+        System.out.print("Enter: ");
+        String hobby = scanner.nextLine();
+
+        System.out.println(name + " " + year + " " + hobby);
+        scanner.close(); // close after using scanner
     }
 
     public static String displayHighScorePosition(String playersName,int position) {
