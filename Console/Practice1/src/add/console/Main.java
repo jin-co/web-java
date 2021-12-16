@@ -16,13 +16,18 @@ public class Main {
         String name = scanner.nextLine();
 
         System.out.print("Enter: ");
-        int year = scanner.nextInt();
-        scanner.nextLine(); // handles enter key without this, it closes
+        boolean hasNextInt = scanner.hasNextInt();
+        if (hasNextInt) {
+            int year = scanner.nextInt();
+            scanner.nextLine(); // handles enter key without this, it closes
 
-        System.out.print("Enter: ");
-        String hobby = scanner.nextLine();
+            System.out.print("Enter: ");
+            String hobby = scanner.nextLine();
 
-        System.out.println(name + " " + year + " " + hobby);
+            System.out.println(name + " " + year + " " + hobby);
+        } else {
+            System.out.println("invalid int");
+        }
         scanner.close(); // close after using scanner
     }
 
