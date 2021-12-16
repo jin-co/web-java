@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
 	    System.out.println(displayHighScorePosition("Tom", 3));
         System.out.println(calculateHighScorePosition(130));
+        System.out.println(toMilesPerHour(20));
     }
 
     public static String displayHighScorePosition(String playersName,int position) {
@@ -23,5 +24,13 @@ public class Main {
             scorePosition = 50;
         }
         return scorePosition;
+    }
+
+    public static long toMilesPerHour(double kilometersPerHour) {
+        long value = -1;
+        if (kilometersPerHour >= 0) {
+            value = Math.round(kilometersPerHour / 1.6);
+        }
+        return value;
     }
 }
