@@ -1,5 +1,8 @@
 package add.console;
 
+import Inheritance.Animal;
+import Inheritance.Dog;
+
 import java.util.Scanner;
 
 public class Main {
@@ -29,6 +32,11 @@ public class Main {
             System.out.println("invalid int");
         }
         scanner.close(); // close after using scanner
+
+        //inheritance
+        Animal animal = new Animal("Animal", 1, 1, "random");
+        Dog dog = new Dog("Tom", 2, 2, 2, 10, 4);
+        dog.eat();
     }
 
     public static String displayHighScorePosition(String playersName,int position) {

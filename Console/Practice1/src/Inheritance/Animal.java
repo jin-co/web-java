@@ -4,11 +4,17 @@ public class Animal {
     private String name;
     private int size;
     private int weight;
+    private String habitat;
 
-    public Animal(String name, int size, int weight) {
+    public Animal(String name, int size, int weight, String habitat) {
         this.name = name;
         this.size = size;
         this.weight = weight;
+        this.habitat = habitat;
+    }
+
+    public void eat() {
+        System.out.println("eating");
     }
 
     public String getName() {
