@@ -83,6 +83,7 @@ public class Main {
         }
     }
 
+    //Polymorphism
     public static Movie randomMovie() {
         int randomNumber = (int) (Math.random() * 5) + 1;
         System.out.println("Random number generated was: " + randomNumber);

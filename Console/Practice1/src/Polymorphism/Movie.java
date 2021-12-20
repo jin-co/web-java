@@ -1,5 +1,5 @@
 package Polymorphism;
-
+// giving different functionality on each method by overriding
 public class Movie {
     private String name;
 
