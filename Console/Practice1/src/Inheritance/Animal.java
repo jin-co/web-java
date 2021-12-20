@@ -1,5 +1,5 @@
 package Inheritance;
-
+// inheritance: is relationship
 public class Animal {
     private String name;
     private int size;

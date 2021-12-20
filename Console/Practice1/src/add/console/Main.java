@@ -1,5 +1,6 @@
 package add.console;
 
+import Composition.*;
 import Inheritance.Animal;
 import Inheritance.Dog;
 
@@ -37,6 +38,27 @@ public class Main {
         Animal animal = new Animal("Animal", 1, 1, "random");
         Dog dog = new Dog("Tom", 2, 2, 2, 10, 4);
         dog.eat();
+
+        //composition
+        Dimensions dimensions = new Dimensions(20, 20, 5);
+        Case theCase = new Case("220B", "Dell", "240", dimensions);
+        Monitor monitor = new Monitor(
+                "27inch Beast",
+                "Acer",
+                27,
+                new Resolution(2540, 1440));
+        Motherboard motherboard = new Motherboard(
+                "BJ-200",
+                "Asus",
+                "v2.44",
+                4,
+                6);
+        PC pc = new PC(theCase, monitor, motherboard);
+        // calling with getters
+//        pc.getMonitor().drawPixelAt(1500, 1200, "red");
+//        pc.getMotherboard().loadProgram("Windows 1.0");
+//        pc.getTheCase().pressPowerButton();
+        pc.powerUp();
     }
 
     public static String displayHighScorePosition(String playersName,int position) {
