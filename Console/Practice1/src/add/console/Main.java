@@ -1,6 +1,8 @@
 package add.console;
 
 import Composition.*;
+import Encapsulation.EncapsulatedPlayer;
+import Encapsulation.Player;
 import Inheritance.Animal;
 import Inheritance.Dog;
 
@@ -59,6 +61,17 @@ public class Main {
 //        pc.getMotherboard().loadProgram("Windows 1.0");
 //        pc.getTheCase().pressPowerButton();
         pc.powerUp();
+
+        //Encapsulation
+        Player player = new Player();
+        player.name = "Tim";
+        player.health = 50;
+        player.weapon = "sword";
+        player.loseHealth(30);
+        System.out.println(player.healthRemaining());
+
+        EncapsulatedPlayer ePlayer = new EncapsulatedPlayer("Tim", 50, "sword");
+        System.out.println(ePlayer.getHealth());
     }
 
     public static String displayHighScorePosition(String playersName,int position) {
