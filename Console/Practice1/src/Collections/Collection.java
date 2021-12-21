@@ -1,6 +1,7 @@
 package Collections;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Collection {
     private int[] nums;
@@ -8,6 +9,7 @@ public class Collection {
 
     public void addList(String input) {
         groceryList.add(input);
+        groceryList.add(1, input);
     }
 
     public void updateList(int position, String newInput) {
@@ -22,5 +24,12 @@ public class Collection {
         boolean foundItem = groceryList.contains(searchItem);
         int position = groceryList.indexOf(searchItem);
         return groceryList.get(position);
+    }
+
+    public void printAll() {
+        Iterator<String> i = groceryList.iterator();
+        while (i.hasNext()) {
+            System.out.println(i);
+        }
     }
 }
