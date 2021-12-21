@@ -5,6 +5,9 @@ import Encapsulation.EncapsulatedPlayer;
 import Encapsulation.Player;
 import Inheritance.Animal;
 import Inheritance.Dog;
+import Interface.DeskPhone;
+import Interface.ITelephone;
+import Interface.MobilePhone;
 import Polymorphism.*;
 
 import java.util.Scanner;
@@ -81,6 +84,14 @@ public class Main {
                     "Movie #" + i + ": " + movie.getName() + "\n"
                     + "Plot: " + movie.plot() + "\n");
         }
+
+        //Interface
+        ITelephone timsPhone;
+        timsPhone = new DeskPhone();
+        DeskPhone sheatsPhone;
+        sheatsPhone = new DeskPhone();
+        timsPhone = new MobilePhone();
+//        sheatsPhone = new MobilePhone();
     }
 
     //Polymorphism

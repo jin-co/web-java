@@ -1,8 +1,9 @@
 package Interface;
 
-public class DeskPhone implements ITelephone {
+public class MobilePhone implements ITelephone{
     private int myNumber;
     private boolean isRinging;
+    private boolean isOn = false;
 
     @Override
     public void powerOn() {

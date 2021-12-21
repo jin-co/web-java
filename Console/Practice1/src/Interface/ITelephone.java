@@ -1,5 +1,5 @@
 package Interface;
-
+// multiple implementations from various interfaces are possible
 public interface ITelephone {
     void powerOn();
     void dial(int phoneNumber);
