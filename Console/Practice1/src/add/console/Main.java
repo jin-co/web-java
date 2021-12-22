@@ -5,6 +5,7 @@ import Encapsulation.EncapsulatedPlayer;
 import Encapsulation.Player;
 import Inheritance.Animal;
 import Inheritance.Dog;
+import InnerClass.Gearbox;
 import Interface.DeskPhone;
 import Interface.ITelephone;
 import Interface.MobilePhone;
@@ -92,6 +93,12 @@ public class Main {
         sheatsPhone = new DeskPhone();
         timsPhone = new MobilePhone();
 //        sheatsPhone = new MobilePhone();
+
+        //Inner class
+        Gearbox mxLaren = new Gearbox(6);
+//        Gearbox.Gear first = mxLaren.new Gear(1, 12.4);
+        mxLaren.addGear(1, 5.3);
+        mxLaren.operateClutch(true);
     }
 
     //Polymorphism
