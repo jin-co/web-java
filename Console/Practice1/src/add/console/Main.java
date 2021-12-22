@@ -99,6 +99,8 @@ public class Main {
 //        Gearbox.Gear first = mxLaren.new Gear(1, 12.4);
         mxLaren.addGear(1, 5.3);
         mxLaren.operateClutch(true);
+        mxLaren.changeGear(1);
+        mxLaren.operateClutch(false);
     }
 
     //Polymorphism
