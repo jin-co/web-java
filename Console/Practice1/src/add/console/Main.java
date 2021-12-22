@@ -1,5 +1,8 @@
 package add.console;
 
+import AbstractClass.Bird;
+import AbstractClass.Cat;
+import AbstractClass.Parrot;
 import Composition.*;
 import Encapsulation.EncapsulatedPlayer;
 import Encapsulation.Player;
@@ -101,6 +104,14 @@ public class Main {
         mxLaren.operateClutch(true);
         mxLaren.changeGear(1);
         mxLaren.operateClutch(false);
+
+        //Abstract class
+        Cat cat = new Cat("Yorkie");
+        cat.breathe();
+
+        Parrot parrot = new Parrot("Parrot");
+        parrot.breathe();
+        parrot.fly();
     }
 
     //Polymorphism
