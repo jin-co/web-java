@@ -122,10 +122,12 @@ public class Main {
         BaseballPlayer pat = new BaseballPlayer("pat");
         SoccerPlayer beckham = new SoccerPlayer("beckham");
 
-        Team adelaideCrows = new Team("adelaide crows");
+        Team<FootballPlayer> adelaideCrows = new Team<FootballPlayer>("adelaide crows");
         adelaideCrows.addPlayer(joe);
-        adelaideCrows.addPlayer(pat);
-        adelaideCrows.addPlayer(beckham);
+//        adelaideCrows.addPlayer(pat);
+//        adelaideCrows.addPlayer(beckham);
+//        Team<String>
+        
     }
 
     //Polymorphism
