@@ -6,6 +6,10 @@ import AbstractClass.Parrot;
 import Composition.*;
 import Encapsulation.EncapsulatedPlayer;
 import Encapsulation.Player;
+import Generic.BaseballPlayer;
+import Generic.FootballPlayer;
+import Generic.SoccerPlayer;
+import Generic.Team;
 import Inheritance.Animal;
 import Inheritance.Dog;
 import InnerClass.Gearbox;
@@ -112,6 +116,16 @@ public class Main {
         Parrot parrot = new Parrot("Parrot");
         parrot.breathe();
         parrot.fly();
+
+        //Generic
+        FootballPlayer joe = new FootballPlayer("Joe");
+        BaseballPlayer pat = new BaseballPlayer("pat");
+        SoccerPlayer beckham = new SoccerPlayer("beckham");
+
+        Team adelaideCrows = new Team("adelaide crows");
+        adelaideCrows.addPlayer(joe);
+        adelaideCrows.addPlayer(pat);
+        adelaideCrows.addPlayer(beckham);
     }
 
     //Polymorphism
