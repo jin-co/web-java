@@ -12,3 +12,29 @@ _ Experts-exchange.com -> com.experts_exchange
 Classes
 -> pascal
 -> use nouns(they represent things)
+
+Interface
+-> pascal
+-> use what they do or become
+
+Method
+-> camelCase
+-> verb noun
+
+Constats
+-> capital seperated with underscore
+-> used with 'final' keyword
+
+Variables
+-> camel
+-> be descriptive
+
+Type parameters
+-> single capital character
+-> https://docs.oracle.come/javase/tutoral/generics/types.html
+=> e.g.
+- E : Element
+- K : Key
+- T : Type
+- V : Value
+- S, U, V, etc.
