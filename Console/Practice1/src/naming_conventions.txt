@@ -1,4 +1,4 @@
-Packages
+Packages (it creates namespace -> prevents name conflicts)
 -> lower case
 -> use your internet domain name(reversed) as a prefix
 (replace invalid characters(i.e. -) in domain name with an underscore(_))
