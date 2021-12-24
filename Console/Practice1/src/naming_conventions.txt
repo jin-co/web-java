@@ -1,0 +1,14 @@
+Packages
+-> lower case
+-> use your internet domain name(reversed) as a prefix
+(replace invalid characters(i.e. -) in domain name with an underscore(_))
+(cannot start with number -> change it to underscore)
+(keyword -> prefix underscore)
+=> e.g.
+- Switch.supplier.com -> com.supplier._switch
+- 1word.com -> com._1word
+_ Experts-exchange.com -> com.experts_exchange
+
+Classes
+-> pascal
+-> use nouns(they represent things)
