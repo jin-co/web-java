@@ -54,18 +54,18 @@ public class Theater {
     }
 
     // for testing
-    public void getSeats() {
-        for (Seat seat: seats) {
-            System.out.println(seat.getSeatNumber());
-        }
+    public Collection<Seat> getSeats() {
+        return seats;
     }
 
     private class Seat implements Comparable<Seat> {
         private final String seatNumber;
+        private double price;
         private boolean reserved = false;
 
-        public Seat(String seatNumber) {
+        public Seat(String seatNumber, double price) {
             this.seatNumber = seatNumber;
+            this.price = price;
         }
 
         public boolean reserve() {
@@ -92,9 +92,22 @@ public class Theater {
             return seatNumber;
         }
 
+        public double getPrice() {
+            return price;
+        }
+
+        //        @Override
+//        public int compareTo(Seat seat) {
+//            return this.seatNumber.compareTo(seat.getSeatNumber());
+//        }
         @Override
-        public int compareTo(Seat seat) {
+        public int compareTo(Seat seat, double price) {
             return this.seatNumber.compareTo(seat.getSeatNumber());
+        }
+
+        @Override
+        public int compareTo(Seat o) {
+            return 0;
         }
     }
 }
