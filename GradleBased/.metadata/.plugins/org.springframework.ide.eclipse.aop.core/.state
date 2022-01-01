@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
 <aop-project name="Board"/>
+<aop-project name="demo"/>
+<aop-project name="CupidArrow"/>
 <aop-project name="WebTest_Semi"/>
 </aop-reference-model>
