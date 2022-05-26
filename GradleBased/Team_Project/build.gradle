@@ -27,8 +27,7 @@ dependencies {
 	
 	// jsp 
 	implementation('org.apache.tomcat.embed:tomcat-embed-jasper')  
-	implementation('javax.servlet:jstl:1.2')
-	U
+	implementation('javax.servlet:jstl:1.2')	
   
   	// jdbc, mybatis
   	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
