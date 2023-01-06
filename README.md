@@ -1,4 +1,4 @@
 
 # Web practice with Java
 ---
-> Java web applications
+> Java web applications.
