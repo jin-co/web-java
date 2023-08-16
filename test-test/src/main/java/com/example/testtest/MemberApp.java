@@ -8,7 +8,8 @@ import com.example.testtest.member.MemberServiceImpl;
 public class MemberApp {
     public static void main(String[] args) {
         Member member = new Member(1L, "Tom", Grade.VIP);
-        MemberService memberService = new MemberServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
         memberService.join(member);
         System.out.println("memberService = " + memberService);
     }
