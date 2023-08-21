@@ -1,7 +1,10 @@
 package com.example.employee.service;
 
 import com.example.employee.entity.Employee;
+import com.example.employee.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +15,8 @@ public class EmployeeService {
             new Employee(1, "John", "Washington"),
             new Employee(2, "Tom", "Waterloo")
     ));
+    @Autowired
+    EmployeeRepository employeeRepository;
 
     public List<Employee> getEmployees() {
         return employeeList;
@@ -24,13 +29,14 @@ public class EmployeeService {
     }
 
     public void addEmployee(Employee employee) {
-        employeeList.add(employee);
+//        employeeList.add(employee);
+        employeeRepository.save(employee);
     }
 
     public void updateEmployee(Employee employee) {
         List<Employee> tempList = new ArrayList<>();
-        for (Employee e: employeeList) {
-            if(e.getEmployeeId() == employee.getEmployeeId()) {
+        for (Employee e : employeeList) {
+            if (e.getEmployeeId() == employee.getEmployeeId()) {
                 e.setEmployeeName(employee.getEmployeeName());
                 e.setEmployeeCity(employee.getEmployeeCity());
             }
@@ -41,8 +47,8 @@ public class EmployeeService {
 
     public void deleteEmployee(int id) {
         List<Employee> tempList = new ArrayList<>();
-        for (Employee e: employeeList) {
-            if(e.getEmployeeId() == id) {
+        for (Employee e : employeeList) {
+            if (e.getEmployeeId() == id) {
                 continue;
             }
             tempList.add(e);
