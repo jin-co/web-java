@@ -1,9 +1,8 @@
 package com.example.employee.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Employee {
@@ -12,6 +11,17 @@ public class Employee {
     int employeeId;
     String employeeName;
     String employeeCity;
+
+    @ManyToMany
+    @JoinTable
+    private List<Project> projects;
+
+    @OneToMany
+    private List<Address> addresses;
+
+    @OneToOne
+    @JoinColumn(name = "fk_spouse")
+    private Spouse spouse;
 
     public Employee() {
     }
@@ -44,5 +54,21 @@ public class Employee {
 
     public void setEmployeeCity(String employeeCity) {
         this.employeeCity = employeeCity;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    public Spouse getSpouse() {
+        return spouse;
+    }
+
+    public void setSpouse(Spouse spouse) {
+        this.spouse = spouse;
     }
 }
