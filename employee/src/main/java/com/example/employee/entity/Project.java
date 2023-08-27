@@ -1,9 +1,9 @@
 package com.example.employee.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Project {
@@ -12,6 +12,10 @@ public class Project {
     private int projectId;
     private String name;
     private String clientName;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "projects")
+    private List<Employee> employee;
 
     public Project() {
     }
@@ -43,5 +47,13 @@ public class Project {
 
     public void setClientName(String clientName) {
         this.clientName = clientName;
+    }
+
+    public List<Employee> getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(List<Employee> employee) {
+        this.employee = employee;
     }
 }

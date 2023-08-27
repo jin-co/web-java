@@ -1,17 +1,17 @@
 package com.example.employee.service;
 
+import com.example.employee.entity.Address;
 import com.example.employee.entity.Employee;
 import com.example.employee.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class EmployeeService {
-//    List<Employee> employeeList = new ArrayList<>(Arrays.asList(
+    //    List<Employee> employeeList = new ArrayList<>(Arrays.asList(
 //            new Employee(1, "John", "Washington"),
 //            new Employee(2, "Tom", "Waterloo")
 //    ));
@@ -32,6 +32,16 @@ public class EmployeeService {
 
     public void addEmployee(Employee employee) {
 //        employeeList.add(employee);
+        ArrayList<Address> addresses = new ArrayList<>();
+        for (Address address : employee.getAddresses()) {
+            addresses.add(new Address(
+                    address.getZip(),
+                    address.getCity(),
+                    address.getState(),
+                    address.getCountry()
+            ));
+        }
+        employee.setAddresses(addresses);
         employeeRepository.save(employee);
     }
 
