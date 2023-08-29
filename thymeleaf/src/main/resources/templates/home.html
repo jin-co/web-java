@@ -10,9 +10,26 @@
 <p>
     <span th:text="${name}"></span>
     <span th:text="${#strings.toUpperCase(name)}"></span>
+</p>
 <div th:with="variable = ${name}, a=10, b=20">
     <p th:text="${a} * ${b}"></p>
 </div>
-</p>
+<div>
+    <p th:text="${elvis}? 'true':'false'"></p>
+    <p th:if="${elvis}">True</p>
+    <p th:unless="${elvis}">False</p>
+</div>
+<div th:switch="${elvis}">
+    <p th:case="true">True</p>
+    <p th:case="false">False</p>
+</div>
+<div th:each="i, status: ${iteration}">
+    <p th:style="${status.odd} ? 'color:red' : 'color:green'"></p>
+    <p th:text="${status.index}">${i}</p>
+    <p th:text="${status.count}">${i}</p>
+    <p th:text="${status.size}">${i}</p>
+    <p th:text="${status.first}">${i}</p>
+    <p th:text="${status.last}">${i}</p>
+</div>
 </body>
 </html>
