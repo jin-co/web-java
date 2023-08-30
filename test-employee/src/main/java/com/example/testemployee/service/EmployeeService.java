@@ -1,53 +1,51 @@
 package com.example.testemployee.service;
 
+import com.example.testemployee.entity.Address;
 import com.example.testemployee.entity.Employee;
+import com.example.testemployee.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class EmployeeService {
-    List<Employee> employeeList = new ArrayList<>(Arrays.asList(
-            new Employee(1, "John", "Wa"),
-            new Employee(2, "Jack", "Ne")
-    ));
+    @Autowired
+    EmployeeRepository employeeRepository;
 
     public List<Employee> getEmployees() {
-        return employeeList;
+        return employeeRepository.findAll();
     }
 
     public Employee getEmployee(int employeeId) {
-        return employeeList.stream().filter(e -> (
-                e.getEmployeeId() == employeeId
-        )).findFirst().get();
+        return employeeRepository.findById(employeeId).orElseThrow(() -> new RuntimeException("Not Found"));
     }
 
     public void addEmployee(Employee employee) {
-        employeeList.add(employee);
+        ArrayList<Address> addressArrayList = new ArrayList<>();
+        for (Address address : employee.getAddress()) {
+            addressArrayList.add(new Address(
+                    address.getZip(),
+                    address.getCity(),
+                    address.getState(),
+                    address.getCountry()
+            ));
+        }
+        employee.setAddress(addressArrayList);
+        employeeRepository.save(employee);
     }
 
     public void updateEmployee(Employee employee) {
-        List<Employee> tempList = new ArrayList<>();
-        for (Employee e : employeeList) {
-            if (e.getEmployeeId() == employee.getEmployeeId()) {
-                e.setEmployeeName(employee.getEmployeeName());
-                e.setEmployeeCity(employee.getEmployeeCity());
-            }
-            tempList.add(e);
-        }
-        this.employeeList = tempList;
+        /*
+         * jpa only has the save command.
+         * If the ID sent exists in the DB,
+         * it will be updated otherwise new item will be saved
+         */
+        employeeRepository.save(employee);
     }
 
     public void deleteEmployee(int employeeId) {
-        List<Employee> tempList = new ArrayList<>();
-        for (Employee e : employeeList) {
-            if (e.getEmployeeId() == employeeId) {
-                continue;
-            }
-            tempList.add(e);
-        }
-        this.employeeList = tempList;
+        employeeRepository.deleteById(employeeId);
     }
 }
