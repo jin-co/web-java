@@ -1,12 +1,15 @@
 package com.example.testtest.order;
 
 import com.example.testtest.discount.DiscountPolicy;
-import com.example.testtest.discount.FixedPolicy;
 import com.example.testtest.member.Member;
 
 public class OrderServiceImpl implements OrderService{
-    DiscountPolicy discountPolicy = new FixedPolicy();
 
+    DiscountPolicy discountPolicy;
+
+    public OrderServiceImpl(DiscountPolicy discountPolicy) {
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long orderId, String orderName, int price, Member member) {

@@ -1,5 +1,6 @@
 package com.example.testtest;
 
+import com.example.testtest.config.AppConfig;
 import com.example.testtest.member.Grade;
 import com.example.testtest.member.Member;
 import com.example.testtest.member.MemberService;
@@ -13,10 +14,19 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OrderAppTest {
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+    AppConfig appConfig = new AppConfig();
+    MemberService memberService = appConfig.memberService();
+    OrderService orderService = appConfig.orderService();
     @Test
     void createOrder() {
+        Member member = new Member(1L, "tom", Grade.VIP);
+        memberService.join(member);
+        Order o1 = orderService.createOrder(1L, "o1", 10000, member);
+        Assertions.assertThat(o1.getTotalPrice()).isEqualTo(9000);
+    }
+
+    @Test
+    void createOrderWithRatePass() {
         Member member = new Member(1L, "tom", Grade.VIP);
         memberService.join(member);
         Order o1 = orderService.createOrder(1L, "o1", 10000, member);
