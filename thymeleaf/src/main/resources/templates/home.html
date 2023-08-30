@@ -7,6 +7,9 @@
     <title>Title</title>
 </head>
 <body>
+<div th:include="fragment/demo :: header">
+
+</div>
 <p>
     <span th:text="${name}"></span>
     <span th:text="${#strings.toUpperCase(name)}"></span>
