@@ -1,7 +1,7 @@
-package com.example.thymeleaf.service;
+package com.example.library.service;
 
-import com.example.thymeleaf.entity.Publisher;
-import com.example.thymeleaf.repository.PublisherRepository;
+import com.example.library.entity.Publisher;
+import com.example.library.repository.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.example.thymeleaf.entity;
+package com.example.library.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
