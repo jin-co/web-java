@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:replace="/fragments/libraries.html :: library"></div>
+</head>
+<body>
+<div th:insert="/fragments/header.html :: header"></div>
+<div class="container my-2">
+    <div class="card">
+        <div class="card-body">
+            <form action="#" th:action="@{/categories/save/{id}(id=${category.id})}" th:object="${category}"
+                  method="post">
+                <div class="row">
+                    <div class="form-group col-md-8">
+                        <label for="name" class="col-form-label">Category Name</label>
+                        <input type="text" th:field="*{name}" class="form-control" id="name"
+                               placeholder="Category Name"/>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="submit" class="btn btn-primary" value=" Submit ">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

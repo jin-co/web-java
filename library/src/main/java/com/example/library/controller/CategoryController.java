@@ -5,8 +5,7 @@ import com.example.library.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,9 +29,28 @@ public class CategoryController {
         return "add-category";
     }
 
-    @GetMapping("/save")
+    @PostMapping("/save")
     public String saveCategory(Model model, Category categories) {
         categoryService.addCategory(categories);
-        return "redirect:/";
+        return "redirect:/categories";
+    }
+
+    @GetMapping("/update/{id}")
+    public String updateCategory(@PathVariable Long id, Model model, Category category) {
+        Category categoryFound = categoryService.getCategory(id);
+        model.addAttribute("category", categoryFound);
+        return "update-category";
+    }
+
+    @PostMapping("/save/{id}")
+    public String updateSaveCategory(@PathVariable Long id, Model model, Category category) {
+        categoryService.updateCategory(category);
+        return "redirect:/categories";
+    }
+
+    @GetMapping("/remove/{id}")
+    public String removeCategory(@PathVariable Long id, Model model) {
+        categoryService.deleteCategory(id);
+        return "redirect:/categories";
     }
 }

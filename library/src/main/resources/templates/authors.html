@@ -7,14 +7,14 @@
     <div th:replace="/fragments/libraries.html :: library"></div>
 </head>
 <body>
-<div th:insert="/fragments/header :: header"></div>
+<div th:insert="/fragments/header.html :: header"></div>
 <div class="container my-2">
     <div class="card">
         <div class="card-body">
-            <div th:switch="${categories}" class="container my-5">
+            <div th:switch="${authors}" class="container my-5">
                 <p class="my-5">
-                    <a href="/categories/add" class="btn btn-primary">
-                        <i class="fas fa-user-plus ml-2"> Add Category </i></a>
+                    <a href="/authors/add" class="btn btn-primary">
+                        <i class="fas fa-user-plus ml-2"> Add Author </i></a>
                 </p>
                 <div class="col-md-12">
                     <h2 th:case="null">No record found !!</h2>
@@ -29,12 +29,14 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="category : ${categories}">
-                                <td th:text="${category.id}"></td>
-                                <td th:text="${category.name}"></td>
-                                <td><a th:href="@{/categories/update/{id}(id=${category.id})}" class="btn btn-primary"><i
+                            <tr th:each="author : ${authors}">
+                                <td th:text="${author.id}"></td>
+                                <td th:text="${author.name}"></td>
+                                <td><a th:href="@{/authors/update/{id}(id=${author.id})}"
+                                       class="btn btn-primary"><i
                                         class="fas fa-user-edit ml-2"></i></a></td>
-                                <td><a th:href="@{/categories/remove/{id}(id=${category.id})}" class="btn btn-primary"><i
+                                <td><a th:href="@{/authors/remove/{id}(id=${author.id})}"
+                                       class="btn btn-primary"><i
                                         class="fas fa-user-times ml-2"></i></a></td>
                             </tr>
                             </tbody>
@@ -45,6 +47,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
