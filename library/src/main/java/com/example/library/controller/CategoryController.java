@@ -5,6 +5,7 @@ import com.example.library.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,7 +31,10 @@ public class CategoryController {
     }
 
     @PostMapping("/save")
-    public String saveCategory(Model model, Category categories) {
+    public String saveCategory(Model model, Category categories, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "add-category";
+        }
         categoryService.addCategory(categories);
         return "redirect:/categories";
     }
@@ -43,7 +47,10 @@ public class CategoryController {
     }
 
     @PostMapping("/save/{id}")
-    public String updateSaveCategory(@PathVariable Long id, Model model, Category category) {
+    public String updateSaveCategory(@PathVariable Long id, Model model, Category category, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "update-category";
+        }
         categoryService.updateCategory(category);
         return "redirect:/categories";
     }
