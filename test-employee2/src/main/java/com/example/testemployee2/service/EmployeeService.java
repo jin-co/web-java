@@ -11,7 +11,7 @@ import java.util.List;
 public class EmployeeService {
     private List<Employee> employeeList = new ArrayList<>(Arrays.asList(
             new Employee(1L, "John", "Washington"),
-            new Employee(1L, "John", "Washington")
+            new Employee(2L, "Tom", "New York")
     ));
 
     public List<Employee> getEmployees() {
@@ -20,7 +20,7 @@ public class EmployeeService {
 
     public Employee getEmployee(Long id) {
         return employeeList.stream().filter(e -> (
-                e.getId() == id
+                e.getEmployeeId() == id
         )).findFirst().get();
     }
 
@@ -28,12 +28,26 @@ public class EmployeeService {
         employeeList.add(employee);
     }
 
-    public updateEmployee(Employee employee) {
+    public void updateEmployee(Employee employee) {
         List<Employee> temp = new ArrayList<>();
-        employeeList.stream().filter(e -> (
-                e.getId() == employee.getId()
-                ))
-        employeeList
+        for (Employee e: employeeList) {
+            if (e.getEmployeeId() == employee.getEmployeeId()) {
+                e.setEmployeeCity(employee.getEmployeeCity());
+                e.setEmployeeName(employee.getEmployeeName());
+            }
+            temp.add(e);
+        }
+        employeeList = temp;
     }
 
+    public void deleteEmployee(Long id) {
+        List<Employee> temp = new ArrayList<>();
+        for (Employee e : employeeList) {
+            if (e.getEmployeeId() == id) {
+                continue;
+            }
+            temp.add(e);
+        }
+        employeeList = temp;
+    }
 }

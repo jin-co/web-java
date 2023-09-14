@@ -3,37 +3,37 @@ package com.example.testemployee2.entity;
 import jakarta.persistence.Entity;
 
 public class Employee {
-    private Long id;
-    private String name;
-    private String city;
+    private Long employeeId;
+    private String employeeName;
+    private String employeeCity;
 
-    public Employee(Long id, String name, String city) {
-        this.id = id;
-        this.name = name;
-        this.city = city;
+    public Employee(Long employeeId, String employeeName, String employeeCity) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.employeeCity = employeeCity;
     }
 
-    public Long getId() {
-        return id;
+    public Long getEmployeeId() {
+        return employeeId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
     }
 
-    public String getName() {
-        return name;
+    public String getEmployeeName() {
+        return employeeName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
     }
 
-    public String getCity() {
-        return city;
+    public String getEmployeeCity() {
+        return employeeCity;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setEmployeeCity(String employeeCity) {
+        this.employeeCity = employeeCity;
     }
 }
