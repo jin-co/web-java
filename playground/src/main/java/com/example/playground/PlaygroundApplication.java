@@ -12,7 +12,7 @@ public class PlaygroundApplication {
         SpringApplication.run(PlaygroundApplication.class, args);
         areEqualByThreeDecimalPlaces(-3.1756, -3.175);
 
-        System.out.println("args = " + isCatPlaying(false, 35));
+        System.out.println(getDaysInMonth(2, 2022));
     }
 
     public static long toMilesPerHour(double kilometersPerHour) {
@@ -39,7 +39,7 @@ public class PlaygroundApplication {
     }
 
     public static void printYearsAndDays(long minutes) {
-        if(minutes < 0) {
+        if (minutes < 0) {
             System.out.println("Invalid Value");
         }
         long hours = minutes / 60;
@@ -50,17 +50,17 @@ public class PlaygroundApplication {
     }
 
     public static void printEqual(int p1, int p2, int p3) {
-        if(p1 < 0 || p2 < 0 || p3 < 0) {
+        if (p1 < 0 || p2 < 0 || p3 < 0) {
             System.out.println("Invalid Value");
             return;
         }
 
-        if(p1 == p2 && p2 == p3) {
+        if (p1 == p2 && p2 == p3) {
             System.out.println("All numbers are equal");
             return;
         }
 
-        if(p1 != p2 && p2 != p3 && p1 != p3) {
+        if (p1 != p2 && p2 != p3 && p1 != p3) {
             System.out.println("All numbers are different");
             return;
         }
@@ -135,7 +135,7 @@ public class PlaygroundApplication {
     }
 
     public static boolean isLeapYear(int year) {
-        if(year < 1 || year > 9999) {
+        if (year < 1 || year > 9999) {
             return false;
         }
 
@@ -146,7 +146,6 @@ public class PlaygroundApplication {
         if (year % 4 == 0 && year % 100 != 0) {
             return true;
         }
-
         return false;
     }
 
@@ -158,7 +157,52 @@ public class PlaygroundApplication {
         if (year < 1 || year > 9999) {
             return -1;
         }
+        boolean leapYear = isLeapYear(year);
+        int result = 0;
 
-
+        switch (month) {
+            case 1:
+                result = 31;
+                break;
+            case 2: {
+                if (leapYear) {
+                    result = 28;
+                } else {
+                    result = 29;
+                }
+            }
+            break;
+            case 3:
+                result = 31;
+                break;
+            case 4:
+                result = 30;
+                break;
+            case 5:
+                result = 31;
+                break;
+            case 6:
+                result = 30;
+                break;
+            case 7:
+                result = 31;
+                break;
+            case 8:
+                result = 31;
+                break;
+            case 9:
+                result = 30;
+                break;
+            case 10:
+                result = 31;
+                break;
+            case 11:
+                result = 30;
+                break;
+            case 12:
+                result = 31;
+                break;
+        }
+        return result;
     }
 }
