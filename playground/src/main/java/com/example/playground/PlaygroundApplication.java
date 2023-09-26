@@ -11,7 +11,7 @@ public class PlaygroundApplication {
     public static void main(String[] args) {
         SpringApplication.run(PlaygroundApplication.class, args);
         areEqualByThreeDecimalPlaces(-3.1756, -3.175);
-
+        System.out.println(sumOdd(1, 40));
         System.out.println(getDaysInMonth(2, 2022));
     }
 
@@ -204,5 +204,30 @@ public class PlaygroundApplication {
                 break;
         }
         return result;
+    }
+
+    public static boolean isOdd(int number) {
+        if (number > 0) {
+            if (number % 2 == 0) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public static int sumOdd(int start, int end) {
+        int sum = 0;
+        if (start > end || start < 0 || end < 0) {
+            return -1;
+        }
+        for (var i = start; i <= end; i++) {
+            if (isOdd(i)) {
+                sum += i;
+            }
+        }
+        return sum;
     }
 }
