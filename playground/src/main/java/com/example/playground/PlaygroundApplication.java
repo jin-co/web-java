@@ -15,8 +15,7 @@ public class PlaygroundApplication {
     public static void main(String[] args) {
         SpringApplication.run(PlaygroundApplication.class, args);
         areEqualByThreeDecimalPlaces(-3.1756, -3.175);
-        System.out.println(sumOdd(1, 40));
-        System.out.println(getDaysInMonth(2, 2022));
+        numberToWords(10);
     }
 
     public static long toMilesPerHour(double kilometersPerHour) {
@@ -355,14 +354,13 @@ public class PlaygroundApplication {
     public static void numberToWords(int number) {
         if (number < 0) {
             System.out.println("Invalid Value");
+            return;
         }
+        int total = getDigitCount(number);
         number = reverse(number);
         String[] output = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
 
-        if(number == 0) {
-            System.out.println(output[0]);
-        }
-        while (number > 0) {
+        for (int i = 0; i < total; i++) {
             System.out.println(output[number % 10]);
             number = number / 10;
         }
@@ -372,7 +370,7 @@ public class PlaygroundApplication {
         char[] charArr = Integer.toString(number).toCharArray();
         String temp = "";
         for (int i = charArr.length; i > 0; i--) {
-            temp += charArr[i];
+            temp += charArr[i - 1];
         }
         return Integer.parseInt(temp);
     }
