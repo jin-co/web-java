@@ -3,7 +3,11 @@ package com.example.playground;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.sql.Array;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @SpringBootApplication
 public class PlaygroundApplication {
@@ -229,5 +233,156 @@ public class PlaygroundApplication {
             }
         }
         return sum;
+    }
+
+    public static boolean isPalindrome(int number) {
+        char[] newNum = Integer.toString(Math.abs(number)).toCharArray();
+        boolean result = true;
+        for (int i = 0; i < newNum.length; i++) {
+            if (newNum[i] != newNum[newNum.length - i]) {
+                result = false;
+            }
+        }
+        return result;
+    }
+
+    public static int sumFirstAndLastDigit(int number) {
+        if (number < 0) {
+            return -1;
+        }
+
+        char[] newNum = Integer.toString(Math.abs(number)).toCharArray();
+        return newNum[0] + newNum[newNum.length];
+    }
+
+    public static int getEvenDigitSum(int number) {
+        if (number < 0) {
+            return -1;
+        }
+        int sum = 0;
+        while (number != 0) {
+            int target = number % 10;
+
+            if (target % 2 == 0) {
+                sum += target;
+            }
+            number = number / 10;
+        }
+        return sum;
+    }
+
+    public static boolean hasSharedDigit(int p1, int p2) {
+        if ((p1 < 10 || p1 > 99) || (p2 < 10 || p2 > 99)) {
+            return false;
+        }
+
+        char[] p1Arr = Integer.toString(Math.abs(p1)).toCharArray();
+        String p2Arr = Integer.toString(Math.abs(p2));
+
+        for (int i = 0; i < p1Arr.length; i++) {
+            if (p2Arr.indexOf(p1Arr[i]) != -1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean hasSameLastDigit(int p1, int p2, int p3) {
+        if ((p1 < 10 || p1 > 1000) || (p2 < 10 || p2 > 1000) || (p3 < 10 || p3 > 1000)) {
+            return false;
+        }
+
+        int newP1 = p1 % 10;
+        int newP2 = p2 % 10;
+        int newP3 = p3 % 10;
+
+        if (newP1 == newP2 || newP1 == newP3 || newP2 == newP3) {
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isValid(int num) {
+        if (num < 10 || num > 1000) {
+            return false;
+        }
+        return true;
+    }
+
+    public static void printFactors(int number) {
+        if (number < 1) {
+            System.out.println("Invalid Value");
+        }
+
+        for (int i = 1; i < number; i++) {
+            if (number % i == 0) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    public static int getGreatestCommonDivisor(int first, int second) {
+        if (first < 10 || second < 10) {
+            return -1;
+        }
+
+        int result = 0;
+        int bigger = first > second ? first : second;
+        for (int i = 0; i < bigger; i++) {
+            if (first % i == 0 && second % i == 0) {
+                result = i;
+            }
+        }
+        return result;
+    }
+
+    public static boolean isPerfectNumber(int number) {
+        if (number < 1) {
+            return false;
+        }
+        int sum = 0;
+        for (int i = 1; i < number; i++) {
+            if (number % i == 0) {
+                sum += i;
+            }
+        }
+        if (sum == number) {
+            return true;
+        }
+        return false;
+    }
+
+    public static void numberToWords(int number) {
+        if (number < 0) {
+            System.out.println("Invalid Value");
+        }
+        number = reverse(number);
+        String[] output = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
+
+        if(number == 0) {
+            System.out.println(output[0]);
+        }
+        while (number > 0) {
+            System.out.println(output[number % 10]);
+            number = number / 10;
+        }
+    }
+
+    public static int reverse(int number) {
+        char[] charArr = Integer.toString(number).toCharArray();
+        String temp = "";
+        for (int i = charArr.length; i > 0; i--) {
+            temp += charArr[i];
+        }
+        return Integer.parseInt(temp);
+    }
+
+    public static int getDigitCount(int number) {
+        if (number < 0) {
+            return -1;
+        }
+
+        char[] charArr = Integer.toString(number).toCharArray();
+        return charArr.length;
     }
 }
