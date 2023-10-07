@@ -11,7 +11,7 @@ public class DemoController {
     private Car car;
 
     @Autowired
-    public void setCar(@Qualifier("BMW") Car car) {
+    public void setCar(@Qualifier("ford") Car car) {
         this.car = car;
     }
 
