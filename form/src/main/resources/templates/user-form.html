@@ -9,7 +9,25 @@
 <form th:action="@{/showResult}" th:object="${user}" method="POST">
     <input type="text" th:field="*{firstName}">
     <input type="text" th:field="*{lastName}">
+    <!--    <select th:field="*{gender}">-->
+    <!--        <option th:value="Male">Male</option>-->
+    <!--        <option th:value="Female">Female</option>-->
+    <!--    </select>-->
+    <select th:field="*{gender}">
+        <option th:each="gender:${genders}" th:value="${gender}" th:text="${gender}"></option>
+    </select>
+
+    <!--    <input type="radio" th:field="*{level}" th:value="high">-->
+    <!--    <input type="radio" th:field="*{level}" th:value="low">-->
+    <input type="radio" th:field="*{level}" th:each="level:${levels}" th:value="${level}" th:text="${level}">
+
+    <!--    <input type="checkbox" th:field="*{hobbies}" th:value="nap"/>-->
+    <!--    <input type="checkbox" th:field="*{hobbies}" th:value="excercise"/>-->
+    <!--    <input type="checkbox" th:field="*{hobbies}" th:value="'going home'"/>-->
+    <input type="checkbox" th:field="*{hobbies}" th:each="hobby:${hobbies}" th:value="${hobby}" th:text="${hobby}"/>
+
     <input type="submit" value="Submit">
+
 </form>
 </body>
 </html>

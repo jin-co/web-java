@@ -7,7 +7,11 @@
 <body>
 <h3>Result</h3>
 <p th:text="${user.firstName}">
-
-</p>
+<p th:text="${user.gender}">
+<p th:text="${user.level}">
+<!--<p th:text="${user.hobbies}">-->
+<ul>
+    <li th:each="hobby:${user.hobbies}" th:text="${hobby}"/>
+</ul>
 </body>
 </html>
