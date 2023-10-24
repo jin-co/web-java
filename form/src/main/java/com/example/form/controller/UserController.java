@@ -4,6 +4,7 @@ import com.example.form.entity.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +34,8 @@ public class UserController {
     }
 
     @PostMapping("/showResult")
-    public String showResult(@ModelAttribute("user") User user, Model model) {
+    public String showResult(@ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
+        System.out.println("bindingResult = " + bindingResult.toString());
         return "user-confirmation";
     }
 }

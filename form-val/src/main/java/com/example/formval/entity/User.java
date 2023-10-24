@@ -1,5 +1,6 @@
 package com.example.formval.entity;
 
+import com.example.formval.validation.Code;
 import jakarta.validation.constraints.*;
 
 public class User {
@@ -18,6 +19,9 @@ public class User {
 
     @Pattern(regexp = "$[a-zA-Z0-9]{5}", message = "format")
     private String postal;
+
+    @Code(value = "CDO")
+    private String code;
 
     public User() {
     }
@@ -44,5 +48,29 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getLevelMen() {
+        return levelMen;
+    }
+
+    public void setLevelMen(String levelMen) {
+        this.levelMen = levelMen;
+    }
+
+    public String getPostal() {
+        return postal;
+    }
+
+    public void setPostal(String postal) {
+        this.postal = postal;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }
