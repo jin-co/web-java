@@ -31,6 +31,7 @@ public class UserController {
             @Valid @ModelAttribute("user") User user,
             BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
+            System.out.println(bindingResult.toString());
             return "user-form";
         } else {
             return "confirmation";

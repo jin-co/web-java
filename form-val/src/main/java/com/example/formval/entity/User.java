@@ -7,7 +7,7 @@ public class User {
     private String firstName;
 
     @NotNull(message = "required")
-    @Size(min = 1, message = "Must be over 1")
+    @Size(min = 1, max = 3, message = "Must be more than 1 and less than 3")
     private String lastName;
 
     @Min(value = 0, message = "over 1")
