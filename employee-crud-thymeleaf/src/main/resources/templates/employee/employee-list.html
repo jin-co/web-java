@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<html lang="en" xmlns:th="http://www.thymeleaf.com" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -12,6 +12,21 @@
     <hr>
 
     <a th:href="@{/employees/addForm}" class="btn btn-primary btn-sm mb-3">Add Employee</a>
+
+    <form action="#" th:action="@{/logout}" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+
+    <p sec:authentication="principal.username"></p>
+    <p sec:authentication="principal.authorities"></p>
+
+    <p sec:authorize="hasRole('MAN')">
+        <a th:href="@{/manage/}">Manage</a>
+    </p>
+
+    <p sec:authorize="hasRole('ADM')">
+        <a th:href="@{/system/}">System</a>
+    </p>
 
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
