@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class DbRelApplication {
 
@@ -24,8 +26,24 @@ public class DbRelApplication {
 //            deleteEmployee(appDAO);
 //            findEmployeeDetail(appDAO);
 //            deleteEmployeeDetail(appDAO);
-            createEmployeeWithProject(appDAO);
+//            createEmployeeWithProject(appDAO);
+//            findEmployeeWithProjects(appDAO);
+            findProjectForEmployee(appDAO);
         };
+    }
+
+    private void findProjectForEmployee(AppDAO appDAO) {
+        int id = 1;
+        Employee employee = appDAO.findOne(id);
+
+        List<Project> projects = appDAO.findProjectByEmployee(id);
+        employee.setProjects(projects);
+        System.out.println(employee.getProjects());
+    }
+
+    private void findEmployeeWithProjects(AppDAO appDAO) {
+        int id = 1;
+        Employee employee = appDAO.findOne(id);
     }
 
     private void createEmployeeWithProject(AppDAO appDAO) {
