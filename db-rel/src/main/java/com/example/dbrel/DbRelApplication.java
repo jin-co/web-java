@@ -28,8 +28,32 @@ public class DbRelApplication {
 //            deleteEmployeeDetail(appDAO);
 //            createEmployeeWithProject(appDAO);
 //            findEmployeeWithProjects(appDAO);
-            findProjectForEmployee(appDAO);
+//            findProjectForEmployee(appDAO);
+//            findEmployeeWithProjectJoinFetch(appDAO);
+//            updateEmployee(appDAO);
+            updateProject(appDAO);
         };
+    }
+
+    private void updateProject(AppDAO appDAO) {
+        int id = 1;
+        Project project = appDAO.findProjectById(id);
+        project.setTitle("Great");
+        appDAO.update(project);
+    }
+
+    private void updateEmployee(AppDAO appDAO) {
+        int id = 1;
+        Employee employee = appDAO.findOne(id);
+        employee.setLastName("Good");
+        appDAO.update(employee);
+    }
+
+    private void findEmployeeWithProjectJoinFetch(AppDAO appDAO) {
+        int id = 1;
+        Employee employee = appDAO.findEmployeeByIdJoinFetch(id);
+        System.out.println(employee);
+        System.out.println(employee.getProjects());
     }
 
     private void findProjectForEmployee(AppDAO appDAO) {

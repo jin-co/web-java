@@ -64,4 +64,30 @@ public class AppDAOImpl implements AppDAO {
         List<Project> project = query.getResultList();
         return project;
     }
+
+    @Override
+    public Employee findEmployeeByIdJoinFetch(int id) {
+        TypedQuery<Employee> query = entityManager.createQuery(
+                "select e from Employee e JOIN FETCH e.projects JOIN FETCH e.employeeDetail where e.id = :data", Employee.class
+        );
+        return null;
+    }
+
+    @Override
+    @Transactional
+    public void update(Employee employee) {
+        entityManager.merge(employee);
+    }
+
+    @Override
+    @Transactional
+    public void update(Project project) {
+        entityManager.merge(project);
+    }
+
+    @Override
+    @Transactional
+    public Project findProjectById(int id) {
+        return entityManager.find(Project.class, id);
+    }
 }

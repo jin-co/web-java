@@ -18,4 +18,12 @@ public interface AppDAO {
     void deleteEmployeeDetail(int id);
 
     List<Project> findProjectByEmployee(int id);
+
+    Employee findEmployeeByIdJoinFetch(int id);
+
+    void update(Employee employee);
+
+    void update(Project project);
+
+    Project findProjectById(int id);
 }
