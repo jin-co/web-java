@@ -3,6 +3,7 @@ package com.example.dbrel;
 import com.example.dbrel.dao.AppDAO;
 import com.example.dbrel.entity.Employee;
 import com.example.dbrel.entity.EmployeeDetail;
+import com.example.dbrel.entity.Memo;
 import com.example.dbrel.entity.Project;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -31,8 +32,30 @@ public class DbRelApplication {
 //            findProjectForEmployee(appDAO);
 //            findEmployeeWithProjectJoinFetch(appDAO);
 //            updateEmployee(appDAO);
-            updateProject(appDAO);
+//            updateProject(appDAO);
+//            deleteEmployee(appDAO);
+//            deleteProject(appDAO);
+//            createProjectWithMemo(appDAO);
+            retrieveProjectMemo(appDAO);
         };
+    }
+
+    private void retrieveProjectMemo(AppDAO appDAO) {
+        int id = 1;
+        Project project = appDAO.findProjectAndMemoByProjectId(id);
+    }
+
+    private void createProjectWithMemo(AppDAO appDAO) {
+        Project project = new Project("Pacman");
+        project.addMemo(new Memo("One"));
+        project.addMemo(new Memo("Two"));
+
+        appDAO.save(project);
+    }
+
+    private void deleteProject(AppDAO appDAO) {
+        int id = 1;
+        appDAO.deleteProjectByid(id);
     }
 
     private void updateProject(AppDAO appDAO) {

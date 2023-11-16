@@ -2,6 +2,7 @@ package com.example.dbrel.dao;
 
 import com.example.dbrel.entity.Employee;
 import com.example.dbrel.entity.EmployeeDetail;
+import com.example.dbrel.entity.Memo;
 import com.example.dbrel.entity.Project;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -36,6 +37,11 @@ public class AppDAOImpl implements AppDAO {
     @Transactional
     public void deleteEmployee(int id) {
         Employee employee = entityManager.find(Employee.class, id);
+        List<Project> projects = employee.getProjects();
+        for (Project project : projects) {
+            project.setEmployee(null);
+        }
+
         entityManager.remove(employee);
     }
 
@@ -89,5 +95,27 @@ public class AppDAOImpl implements AppDAO {
     @Transactional
     public Project findProjectById(int id) {
         return entityManager.find(Project.class, id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteProjectByid(int id) {
+        Project project = entityManager.find(Project.class, id);
+        entityManager.remove(project);
+    }
+
+    @Override
+    @Transactional
+    public void save(Project project) {
+        entityManager.persist(project);
+    }
+
+    @Override
+    public Project findProjectAndMemoByProjectId(int id) {
+        TypedQuery<Project> query = entityManager.createQuery(
+                "select p from Project p JOIN FETCH p.memos where p.id = :data", Project.class
+        );
+        query.setParameter("data", id);
+        Project project = query.getSingleResult();
     }
 }

@@ -2,6 +2,7 @@ package com.example.dbrel.dao;
 
 import com.example.dbrel.entity.Employee;
 import com.example.dbrel.entity.EmployeeDetail;
+import com.example.dbrel.entity.Memo;
 import com.example.dbrel.entity.Project;
 
 import java.util.List;
@@ -26,4 +27,10 @@ public interface AppDAO {
     void update(Project project);
 
     Project findProjectById(int id);
+
+    void deleteProjectByid(int id);
+
+    void save(Project project);
+
+    Project findProjectAndMemoByProjectId(int id);
 }
