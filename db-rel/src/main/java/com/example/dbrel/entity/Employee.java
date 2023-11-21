@@ -1,6 +1,7 @@
 package com.example.dbrel.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.jdbc.Work;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,10 @@ public class Employee {
 
     @OneToMany(mappedBy = "employee", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Project> projects;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinTable(name = "workshop_employee", joinColumns = @JoinColumn(name = "employee_id"), inverseJoinColumns = @JoinColumn(name = "workshop_id"))
+    private List<Workshop> workshops;
 
     public Employee() {
     }
@@ -93,12 +98,27 @@ public class Employee {
         this.projects = projects;
     }
 
+    public List<Workshop> getWorkshops() {
+        return workshops;
+    }
+
+    public void setWorkshops(List<Workshop> workshops) {
+        this.workshops = workshops;
+    }
+
     public void add(Project project) {
         if (project == null) {
             projects = new ArrayList<>();
         }
         projects.add(project);
         project.setEmployee(this);
+    }
+
+    public void addWorkshop(Workshop workshop) {
+        if (workshop == null) {
+            workshops = new ArrayList<>();
+        }
+        workshops.add(workshop);
     }
 }
 

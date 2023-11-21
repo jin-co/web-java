@@ -36,8 +36,14 @@ public class DbRelApplication {
 //            deleteEmployee(appDAO);
 //            deleteProject(appDAO);
 //            createProjectWithMemo(appDAO);
-            retrieveProjectMemo(appDAO);
+//            retrieveProjectMemo(appDAO);
+            deleteProjectAndMemo(appDAO);
         };
+    }
+
+    private void deleteProjectAndMemo(AppDAO appDAO) {
+        int id = 1;
+        appDAO.deleteProjectByid(id);
     }
 
     private void retrieveProjectMemo(AppDAO appDAO) {
