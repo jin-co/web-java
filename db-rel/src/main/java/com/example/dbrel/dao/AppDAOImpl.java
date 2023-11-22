@@ -1,11 +1,9 @@
 package com.example.dbrel.dao;
 
-import com.example.dbrel.entity.Employee;
-import com.example.dbrel.entity.EmployeeDetail;
-import com.example.dbrel.entity.Memo;
-import com.example.dbrel.entity.Project;
+import com.example.dbrel.entity.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import org.hibernate.jdbc.Work;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,11 +60,11 @@ public class AppDAOImpl implements AppDAO {
     public List<Project> findProjectByEmployee(int id) {
         //creating query
         TypedQuery<Project> query = entityManager.createQuery(
-                "from Project where employee.id=:data", Project.class
+                "select * from Project where employee.id=:data", Project.class
         );
         query.setParameter("data", id);
 
-        //excuting query
+        //executing query
         List<Project> project = query.getResultList();
         return project;
     }
@@ -117,5 +115,16 @@ public class AppDAOImpl implements AppDAO {
         );
         query.setParameter("data", id);
         Project project = query.getSingleResult();
+        return project;
+    }
+
+    @Override
+    public Workshop findWorkshopAndEmployeeByWorkshopId(int id) {
+        TypedQuery<Workshop> query = entityManager.createQuery(
+                "select w from Workshop w JOIN FETCH w.employees where w.id = :data", Workshop.class
+        );
+        query.setParameter("data", id);
+        Workshop workshop = query.getSingleResult();
+        return workshop;
     }
 }

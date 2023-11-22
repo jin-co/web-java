@@ -1,9 +1,6 @@
 package com.example.dbrel.dao;
 
-import com.example.dbrel.entity.Employee;
-import com.example.dbrel.entity.EmployeeDetail;
-import com.example.dbrel.entity.Memo;
-import com.example.dbrel.entity.Project;
+import com.example.dbrel.entity.*;
 
 import java.util.List;
 
@@ -33,4 +30,6 @@ public interface AppDAO {
     void save(Project project);
 
     Project findProjectAndMemoByProjectId(int id);
+
+    Workshop findWorkshopAndEmployeeByWorkshopId(int id);
 }

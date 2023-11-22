@@ -1,10 +1,7 @@
 package com.example.dbrel;
 
 import com.example.dbrel.dao.AppDAO;
-import com.example.dbrel.entity.Employee;
-import com.example.dbrel.entity.EmployeeDetail;
-import com.example.dbrel.entity.Memo;
-import com.example.dbrel.entity.Project;
+import com.example.dbrel.entity.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -37,8 +34,23 @@ public class DbRelApplication {
 //            deleteProject(appDAO);
 //            createProjectWithMemo(appDAO);
 //            retrieveProjectMemo(appDAO);
-            deleteProjectAndMemo(appDAO);
+//            deleteProjectAndMemo(appDAO);
+//            createWorkshopAndEmployee(appDAO);
+            findWorkshopAndEmployees(appDAO);
         };
+    }
+
+    private void findWorkshopAndEmployees(AppDAO appDAO) {
+        int id = 1;
+        Workshop workshop = appDAO.findWorkshopAndEmployeeByWorkshopId(id);
+    }
+
+    private void createWorkshopAndEmployee(AppDAO appDAO) {
+        Workshop workshop = new Workshop("What");
+        Employee employee1 = new Employee("emp1", "one", "emp1@e.com");
+        Employee employee2 = new Employee("emp1", "one", "emp1@e.com");
+        workshop.addEmployee(employee1);
+        workshop.addEmployee(employee2);
     }
 
     private void deleteProjectAndMemo(AppDAO appDAO) {

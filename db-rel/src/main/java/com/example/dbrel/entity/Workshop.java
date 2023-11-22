@@ -20,9 +20,8 @@ public class Workshop {
     public Workshop() {
     }
 
-    public Workshop(String name, List<Employee> employees) {
+    public Workshop(String name) {
         this.name = name;
-        this.employees = employees;
     }
 
     public int getId() {
