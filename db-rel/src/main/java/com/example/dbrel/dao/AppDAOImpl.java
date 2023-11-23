@@ -60,7 +60,7 @@ public class AppDAOImpl implements AppDAO {
     public List<Project> findProjectByEmployee(int id) {
         //creating query
         TypedQuery<Project> query = entityManager.createQuery(
-                "select * from Project where employee.id=:data", Project.class
+                "select employee from Project where employee.id=:data", Project.class
         );
         query.setParameter("data", id);
 
@@ -126,5 +126,15 @@ public class AppDAOImpl implements AppDAO {
         query.setParameter("data", id);
         Workshop workshop = query.getSingleResult();
         return workshop;
+    }
+
+    @Override
+    public Employee findEmployeeAndWorkshopByEmployeeId(int id) {
+        TypedQuery<Employee> query = entityManager.createQuery(
+                "select e from Employee e JOIN FETCH e.workshops where e.id = :data", Employee.class
+        );
+        query.setParameter("data", id);
+        Employee employee = query.getSingleResult();
+        return employee;
     }
 }

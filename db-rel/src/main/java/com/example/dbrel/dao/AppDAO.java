@@ -32,4 +32,6 @@ public interface AppDAO {
     Project findProjectAndMemoByProjectId(int id);
 
     Workshop findWorkshopAndEmployeeByWorkshopId(int id);
+
+    Employee findEmployeeAndWorkshopByEmployeeId(int id);
 }

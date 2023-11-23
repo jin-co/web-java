@@ -36,8 +36,14 @@ public class DbRelApplication {
 //            retrieveProjectMemo(appDAO);
 //            deleteProjectAndMemo(appDAO);
 //            createWorkshopAndEmployee(appDAO);
-            findWorkshopAndEmployees(appDAO);
+//            findWorkshopAndEmployees(appDAO);
+            findEmployeesAndWorkshop(appDAO);
         };
+    }
+
+    private void findEmployeesAndWorkshop(AppDAO appDAO) {
+        int id = 1;
+        Employee employee = appDAO.findEmployeeAndWorkshopByEmployeeId(id);
     }
 
     private void findWorkshopAndEmployees(AppDAO appDAO) {
@@ -87,6 +93,13 @@ public class DbRelApplication {
         int id = 1;
         Employee employee = appDAO.findOne(id);
         employee.setLastName("Good");
+
+        Workshop workshop1 = new Workshop("work1");
+        Workshop workshop2 = new Workshop("work2");
+
+        employee.addWorkshop(workshop1);
+        employee.addWorkshop(workshop2);
+
         appDAO.update(employee);
     }
 
