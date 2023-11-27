@@ -3,6 +3,7 @@ package com.example.playground;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import javax.sound.midi.Soundbank;
 import java.sql.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -26,10 +27,11 @@ public class PlaygroundApplication {
         }
     }
 
-    public static void printCoversion(double kilometersPerHour) {
+    public static void printConversion(double kilometersPerHour) {
         if (kilometersPerHour < 0) {
             System.out.println("Invalid Value");
-            Math.round(1.9);
+        } else {
+            System.out.println(kilometersPerHour + " km/h = " + toMilesPerHour(kilometersPerHour) + " mi/h");
         }
     }
 
@@ -382,5 +384,15 @@ public class PlaygroundApplication {
 
         char[] charArr = Integer.toString(number).toCharArray();
         return charArr.length;
+    }
+
+    public static void checkNumber(int number) {
+        if (number > 0) {
+            System.out.println("positive");
+        } else if (number < 0) {
+            System.out.println("negative");
+        } else {
+            System.out.println("zero");
+        }
     }
 }
