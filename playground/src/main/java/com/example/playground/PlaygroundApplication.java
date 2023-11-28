@@ -395,4 +395,26 @@ public class PlaygroundApplication {
             System.out.println("zero");
         }
     }
+
+    public static void printMegaBytesAndKiloBytes(int kiloBytes) {
+        if (kiloBytes < 0) {
+            System.out.println("Invalid Value");
+            return;
+        }
+        int megaByte = kiloBytes / 1024;
+        int kilo = kiloBytes % 1024;
+        System.out.println(kiloBytes + " KB = " + megaByte + " MB and " + kilo + " KB");
+    }
+
+    public static boolean shouldWakeUp(boolean barking, int hourOfDay) {
+        if (hourOfDay < 0 || hourOfDay > 23) {
+            return false;
+        }
+
+        if (barking && hourOfDay < 8 || hourOfDay > 22) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
