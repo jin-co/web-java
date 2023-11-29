@@ -16,7 +16,7 @@ public class PlaygroundApplication {
     public static void main(String[] args) {
         SpringApplication.run(PlaygroundApplication.class, args);
         areEqualByThreeDecimalPlaces(-3.1756, -3.175);
-        numberToWords(10);
+//        numberToWords(10);
     }
 
     public static long toMilesPerHour(double kilometersPerHour) {
@@ -35,12 +35,27 @@ public class PlaygroundApplication {
         }
     }
 
-    public static void areEqualByThreeDecimalPlaces(double p1, double p2) {
-//        if(p1 == p2) {
-//            return true;
-//        }
-        String s1 = Double.toString(p1 * 1000).split("\\.")[0];
-        String s2 = Double.toString(p2 * 1000).split("\\.")[0];
+    public static boolean areEqualByThreeDecimalPlaces(double p1, double p2) {
+        char[] s1 = Double.toString(p1).toCharArray();
+        char[] s2 = Double.toString(p2).toCharArray();
+        boolean result = true;
+        boolean countStart = false;
+        int decimalCount = 0;
+        for (int i = 0; i < s1.length; i++) {
+            if (decimalCount > 3) {
+                break;
+            }
+            if (s1[i] == '.') {
+                countStart = true;
+            }
+            if (countStart) {
+                decimalCount++;
+            }
+            if (s1[i] != s2[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void printYearsAndDays(long minutes) {
