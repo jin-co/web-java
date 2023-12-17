@@ -432,4 +432,28 @@ public class PlaygroundApplication {
             return false;
         }
     }
+
+    public static boolean hasEqualSum(int n, int n2, int n3) {
+        if (n + n2 == n3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean hasTeen(int n, int n2, int n3) {
+        if ((n > 12 && n < 20) || (n2 > 12 && n2 < 20) || (n3 > 12 && n3 < 20)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean isTeen(int n) {
+        if (n > 12 && n < 20) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
