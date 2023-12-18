@@ -61,12 +61,13 @@ public class PlaygroundApplication {
     public static void printYearsAndDays(long minutes) {
         if (minutes < 0) {
             System.out.println("Invalid Value");
+        } else {
+            long hours = minutes / 60;
+            long days = (hours / 24) % 365;
+            long years = (hours / 24) / 365;
+            long min = minutes % 60;
+            System.out.println(minutes + " min = " + years + " y and " + days + " d");
         }
-        long hours = minutes / 60;
-        long days = hours / 24;
-        long years = days / 365;
-        long min = minutes % 60;
-        System.out.println(min + " min = " + years + " y and " + days + " d");
     }
 
     public static void printEqual(int p1, int p2, int p3) {
@@ -455,5 +456,19 @@ public class PlaygroundApplication {
         } else {
             return false;
         }
+    }
+
+    public static double area(double radius) {
+        if (radius < 0) {
+            return -1;
+        }
+        return Math.PI * Math.pow(radius, 2);
+    }
+
+    public static double area(double x, double y) {
+        if (x < 0 || y < 0) {
+            return -1;
+        }
+        return x * y;
     }
 }
