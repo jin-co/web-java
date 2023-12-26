@@ -15,8 +15,9 @@ public class PlaygroundApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(PlaygroundApplication.class, args);
-        areEqualByThreeDecimalPlaces(-3.1756, -3.175);
+//        areEqualByThreeDecimalPlaces(-3.1756, -3.175);
 //        numberToWords(10);
+        sumFirstAndLastDigit(0);
     }
 
     public static long toMilesPerHour(double kilometersPerHour) {
@@ -160,9 +161,9 @@ public class PlaygroundApplication {
             return false;
         }
 
-        if (year % 400 == 0) {
-            return true;
-        }
+//        if (year % 400 == 0) {
+//            return true;
+//        }
 
         if (year % 4 == 0 && year % 100 != 0) {
             return true;
@@ -256,7 +257,7 @@ public class PlaygroundApplication {
         char[] newNum = Integer.toString(Math.abs(number)).toCharArray();
         boolean result = true;
         for (int i = 0; i < newNum.length; i++) {
-            if (newNum[i] != newNum[newNum.length - i]) {
+            if (newNum[i] != newNum[(newNum.length - 1) - i]) {
                 result = false;
             }
         }
@@ -268,8 +269,12 @@ public class PlaygroundApplication {
             return -1;
         }
 
-        char[] newNum = Integer.toString(Math.abs(number)).toCharArray();
-        return newNum[0] + newNum[newNum.length];
+        char[] newNum = Integer.toString(number).toCharArray();
+        if(newNum.length > 1) {
+            return newNum[0] - 48 + newNum[newNum.length - 1]  - 48;
+        } else {
+            return newNum[0] - 48 + newNum[0]  - 48;
+        }
     }
 
     public static int getEvenDigitSum(int number) {
