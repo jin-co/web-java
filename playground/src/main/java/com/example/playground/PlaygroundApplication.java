@@ -9,6 +9,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 @SpringBootApplication
 public class PlaygroundApplication {
@@ -17,7 +18,79 @@ public class PlaygroundApplication {
         SpringApplication.run(PlaygroundApplication.class, args);
 //        areEqualByThreeDecimalPlaces(-3.1756, -3.175);
 //        numberToWords(10);
-        sumFirstAndLastDigit(0);
+        try {
+            System.out.println(getInputFromConsole(2000));
+        } catch (Exception e) {
+            System.out.println(getInputFromScanner(2000));
+        }
+    }
+
+    public static void inputThenPrintSumAndAverage() {
+        Scanner scanner = new Scanner(System.in);
+        boolean onGoing = true;
+        int count = 0;
+        long sum = 0;
+        long avg = 0;
+        while (onGoing) {
+            String inputOriginal = scanner.nextLine();
+            try {
+                long input = Long.parseLong(inputOriginal);
+                count++;
+                sum += input;
+            } catch (Exception e) {
+                avg = sum / count;
+                System.out.println("SUM = " + sum + " AVG = " + avg);
+                onGoing = false;
+            }
+        }
+    }
+
+    public static int getBucketCount(double width, double height, double areaPerBucket, int extraBuckets) {
+        if (width <= 0 || height <= 0 || areaPerBucket <= 0) {
+            return -1;
+        }
+        double area = width * height;
+        double numberOfBucketCal = area / areaPerBucket;
+        int numberOfBucket = (int) Math.ceil(numberOfBucketCal);
+        return numberOfBucket + extraBuckets;
+    }
+
+    public static int getBucketCount(double width, double height, double areaPerBucket) {
+        if (width <= 0 || height <= 0 || areaPerBucket <= 0) {
+            return -1;
+        }
+        double area = width * height;
+        double numberOfBucketCal = area / areaPerBucket;
+        int numberOfBucket = (int) Math.ceil(numberOfBucketCal);
+        return numberOfBucket;
+    }
+
+    public static int getBucketCount(double area, double areaPerBucket) {
+        if (area <= 0 || areaPerBucket <= 0) {
+            return -1;
+        }
+        double numberOfBucketCal = area / areaPerBucket;
+        int numberOfBucket = (int) Math.ceil(numberOfBucketCal);
+        return numberOfBucket;
+    }
+
+    public static String getInputFromConsole(int year) {
+        String name = System.console().readLine("Name?");
+        System.out.println("Hi " + name);
+        String dateOfBirth = System.console().readLine("When were you born?");
+        int age = year - Integer.parseInt(dateOfBirth);
+        return "age: " + age;
+    }
+
+    public static String getInputFromScanner(int year) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Name?");
+        String name = scanner.nextLine();
+        System.out.println("Hi " + name);
+        System.out.println("When were you born?");
+        String dateOfBirth = scanner.nextLine();
+        int age = year - Integer.parseInt(dateOfBirth);
+        return "age: " + age;
     }
 
     public static long toMilesPerHour(double kilometersPerHour) {
@@ -270,10 +343,10 @@ public class PlaygroundApplication {
         }
 
         char[] newNum = Integer.toString(number).toCharArray();
-        if(newNum.length > 1) {
-            return newNum[0] - 48 + newNum[newNum.length - 1]  - 48;
+        if (newNum.length > 1) {
+            return newNum[0] - 48 + newNum[newNum.length - 1] - 48;
         } else {
-            return newNum[0] - 48 + newNum[0]  - 48;
+            return newNum[0] - 48 + newNum[0] - 48;
         }
     }
 
@@ -336,7 +409,7 @@ public class PlaygroundApplication {
             System.out.println("Invalid Value");
         }
 
-        for (int i = 1; i < number; i++) {
+        for (int i = 1; i <= number; i++) {
             if (number % i == 0) {
                 System.out.println(i);
             }
@@ -348,14 +421,13 @@ public class PlaygroundApplication {
             return -1;
         }
 
-        int result = 0;
-        int bigger = first > second ? first : second;
-        for (int i = 0; i < bigger; i++) {
+        int smaller = first < second ? first : second;
+        for (int i = smaller; i > 0; i--) {
             if (first % i == 0 && second % i == 0) {
-                result = i;
+                return i;
             }
         }
-        return result;
+        return 0;
     }
 
     public static boolean isPerfectNumber(int number) {
@@ -380,7 +452,7 @@ public class PlaygroundApplication {
             return;
         }
         int total = getDigitCount(number);
-        number = reverse(number);
+        number = reverse(Math.abs(number));
         String[] output = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
 
         for (int i = 0; i < total; i++) {
@@ -475,5 +547,49 @@ public class PlaygroundApplication {
             return -1;
         }
         return x * y;
+    }
+
+    public static boolean canPack(int bigCount, int smallCount, int goal) {
+        if (bigCount < 0 || smallCount < 0 || goal < 0) {
+            return false;
+        }
+
+        int bigOne = bigCount * 5;
+
+        if (goal >= bigOne + smallCount) {
+            return true;
+        } else if (goal >= bigOne) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static int getLargestPrime(int number) {
+        if (number < 0) {
+            return -1;
+        } else {
+            for (int i = number; i > 0; i--) {
+                if (isPrime(i) && number % i == 0) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
+    public static boolean isPrime(int number) {
+        for (int i = 2; i < number; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void printSquareStar(int number) {
+        if (number < 5) {
+            System.out.println("Invalid Value");
+        }
     }
 }
