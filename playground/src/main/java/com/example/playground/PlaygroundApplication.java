@@ -16,12 +16,240 @@ public class PlaygroundApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(PlaygroundApplication.class, args);
-//        areEqualByThreeDecimalPlaces(-3.1756, -3.175);
-//        numberToWords(10);
-        try {
-            System.out.println(getInputFromConsole(2000));
-        } catch (Exception e) {
-            System.out.println(getInputFromScanner(2000));
+        Person person = new Person();
+        Person.setTest("tom");
+        Person person1 = new Person();
+        Person.setTest("jack");
+
+        System.out.println(person.getTest());
+        System.out.println(person1.getTest());
+    }
+
+    public class Floor {
+        private double width;
+        private double length;
+
+        public Floor(double width, double length) {
+            if (width < 0) {
+                this.width = 0;
+            } else {
+                this.width = width;
+            }
+
+            if (length < 0) {
+                this.length = 0;
+            } else {
+                this.length = length;
+            }
+
+        }
+
+        public double getArea() {
+            return this.width * this.length;
+        }
+    }
+
+    public class Carpet {
+        private double cost;
+
+        public Carpet(double cost) {
+            if (cost < 0) {
+                this.cost = 0;
+            } else {
+                this.cost = cost;
+            }
+        }
+
+        public double getCost() {
+            return cost;
+        }
+    }
+
+    public class Calculator {
+        private Floor floor;
+        private Carpet carpet;
+
+        public Calculator(Floor floor, Carpet carpet) {
+            this.floor = floor;
+            this.carpet = carpet;
+        }
+
+        public double getTotalCost() {
+            return this.floor.getArea() * this.carpet.getCost();
+        }
+    }
+
+    public class Point {
+        private int x;
+        private int y;
+
+        public Point() {
+        }
+
+        public Point(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public int getX() {
+            return x;
+        }
+
+        public void setX(int x) {
+            this.x = x;
+        }
+
+        public int getY() {
+            return y;
+        }
+
+        public void setY(int y) {
+            this.y = y;
+        }
+    }
+
+    public class Wall {
+        private double width;
+        private double height;
+
+        public Wall() {
+        }
+
+        public Wall(double width, double height) {
+            if (width < 0) {
+                this.width = 0;
+            } else {
+                this.width = width;
+            }
+
+            if (height < 0) {
+                this.height = 0;
+            } else {
+                this.height = height;
+            }
+        }
+
+        public double getWidth() {
+            return width;
+        }
+
+        public void setWidth(double width) {
+            if (width < 0) {
+                this.width = 0;
+            } else {
+                this.width = width;
+            }
+        }
+
+        public double getHeight() {
+            return height;
+        }
+
+        public void setHeight(double height) {
+            if (height < 0) {
+                this.height = 0;
+            } else {
+                this.height = height;
+            }
+        }
+
+        public double getArea() {
+            return this.height * this.width;
+        }
+    }
+
+    public class SimpleCalculator {
+        private double firstNumber;
+        private double secondNumber;
+
+        public double getFirstNumber() {
+            return this.firstNumber;
+        }
+
+        public double getSecondNumber() {
+            return this.secondNumber;
+        }
+
+        public void setFirstNumber(double firstNumber) {
+            this.firstNumber = firstNumber;
+        }
+
+        public void setSecondNumber(double secondNumber) {
+            this.secondNumber = secondNumber;
+        }
+
+        public double getAdditionResult() {
+            return this.firstNumber + this.secondNumber;
+        }
+
+        public double getSubtractionResult() {
+            return this.firstNumber - this.secondNumber;
+        }
+
+        public double getMultiplicationResult() {
+            return this.firstNumber * this.secondNumber;
+        }
+
+        public double getDivisionResult() {
+            if (this.secondNumber == 0) {
+                return 0;
+            }
+            return this.firstNumber / this.secondNumber;
+        }
+    }
+
+    public static class Person {
+        private String firstName;
+        private String lastName;
+        private static String test;
+        private int age;
+
+        public static String getTest() {
+            return test;
+        }
+
+        public static void setTest(String test) {
+            Person.test = test;
+        }
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public void setFirstName(String firstName) {
+            this.firstName = firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
+        }
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            if (age < 0 || age > 100) {
+                this.age = 0;
+            } else {
+                this.age = age;
+            }
+        }
+
+        public boolean isTeen() {
+            if (this.age > 12 && this.age < 20) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        public String getFullName() {
+            return this.firstName + " " + this.lastName;
         }
     }
 
