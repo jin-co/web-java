@@ -1,7 +1,30 @@
 package com.example.thymeleaf.controller;
 
 public class Test {
-    EAN_UOM	String	10	YES	New Field to be added
-    EAN	String	20	YES	New Field to be added
-    MATERIAL	Active_status	String	2	NO
+    header
+            batch_id
+    create_dt
+            cntry_cd
+    cmpny_cd
+            pricemasters
+    idoc_ref
+            sap_code
+    uom
+            price_grp
+    no
+            customer_group
+    group_id
+            nett_price
+    curr
+            eff_dt
+    customer_number
+            customer_group5
+    condition
+            no
+    customer_group
+            name
+    value
+            footer
+    ttl_price
+
 }
