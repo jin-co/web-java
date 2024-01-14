@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:3000")
 @AllArgsConstructor
 @RequestMapping("/api/employee")
 public class EmployeeController {
@@ -34,5 +35,17 @@ public class EmployeeController {
     public ResponseEntity<List<EmployeeDto>> getAll() {
         List<EmployeeDto> all = employeeService.getAll();
         return ResponseEntity.ok(all);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable("id") Long employeeId, @RequestBody EmployeeDto employeeDto) {
+        employeeService.updateEmployee(employeeId, employeeDto);
+        return ResponseEntity.ok(employeeDto);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable("id") Long employeeId) {
+        employeeService.deleteEmployee(employeeId);
+        return ResponseEntity.ok("deleted");
     }
 }
